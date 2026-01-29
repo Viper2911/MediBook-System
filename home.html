@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row align-items-center py-5">
+    <div class="col-md-6">
+        <h1 class="display-4 fw-bold text-primary">Smart Healthcare <br>Starts Here.</h1>
+        <p class="lead text-muted my-3">
+            MediBook uses advanced <strong>Machine Learning</strong> to understand your symptoms and connect you with the perfect specialist instantly.
+        </p>
+        <div class="d-grid gap-2 d-md-block mt-4">
+            {% if current_user.is_authenticated %}
+                <a href="/dashboard" class="btn btn-primary btn-lg px-4 rounded-pill">Go to Dashboard</a>
+            {% else %}
+                <a href="/register" class="btn btn-primary btn-lg px-4 rounded-pill">Get Started</a>
+                <a href="/login" class="btn btn-outline-secondary btn-lg px-4 rounded-pill">Login</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-md-6 text-center">
+        <img src="https://img.freepik.com/free-vector/doctor-character-background_1270-84.jpg" class="img-fluid rounded-3 shadow-lg" alt="Telemedicine">
+    </div>
+</div>
+
+<div class="row mt-5 text-center">
+    <div class="col-md-4">
+        <div class="p-4">
+            <i class="fas fa-brain fa-3x text-primary mb-3"></i>
+            <h3>AI Powered</h3>
+            <p>Our ML model analyzes your symptoms using Natural Language Processing.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="p-4">
+            <i class="fas fa-user-md fa-3x text-primary mb-3"></i>
+            <h3>Top Specialists</h3>
+            <p>Get matched with certified doctors based on expertise, not just location.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="p-4">
+            <i class="fas fa-calendar-check fa-3x text-primary mb-3"></i>
+            <h3>Easy Booking</h3>
+            <p>Book appointments in one click and manage them from your dashboard.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

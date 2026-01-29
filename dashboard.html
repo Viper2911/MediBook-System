@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>👋 Hello, {{ current_user.username }}</h2>
+    <span class="badge bg-secondary fs-6">{{ current_user.role|capitalize }} Account</span>
+</div>
+
+{% if current_user.role == 'patient' %}
+    <div class="card bg-light p-4 mb-4 border-primary border-2">
+        <div class="d-flex align-items-center">
+            <div class="flex-grow-1">
+                <h4>Need medical help?</h4>
+                <p class="mb-0">Use our AI search to find a doctor immediately.</p>
+            </div>
+            <a href="/search" class="btn btn-primary btn-lg rounded-pill px-4">Find a Doctor</a>
+        </div>
+    </div>
+{% endif %}
+
+<div class="card shadow-sm">
+    <div class="card-header bg-white py-3">
+        <h5 class="mb-0 card-title"><i class="fas fa-calendar-alt"></i> Your Appointments</h5>
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">Doctor / Specialist</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appt in appointments %}
+                <tr>
+                    <td>
+                        <div class="fw-bold">{{ appt.doctor_name }}</div>
+                        <small class="text-muted">{{ appt.specialist }}</small>
+                    </td>
+                    <td class="align-middle">{{ appt.date }}</td>
+                    <td class="align-middle"><span class="badge bg-success bg-opacity-75">Confirmed</span></td>
+                    <td class="align-middle">
+                        <a href="#" class="btn btn-sm btn-outline-dark">View Details</a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4" class="text-center py-4 text-muted">No appointments found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
