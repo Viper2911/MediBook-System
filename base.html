@@ -6,16 +6,16 @@
     <title>MediBook System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-light">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="{{ url_for('home') }}">🏥 MediBook</a>
+            <a class="navbar-brand fw-bold" href="{{ url_for('home') }}">🏥 MediBook</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('home') }}">Home</a>
                     </li>
@@ -27,19 +27,18 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url_for('search') }}">AI Symptom Checker</a>
                         </li>
-                        <li class="nav-item">
-                            <span class="nav-link text-warning">| Hello, {{ current_user.username }}!</span>
+                        <li class="nav-item ms-3">
+                            <span class="badge bg-light text-primary fs-6">Hello, {{ current_user.username }}</span>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                        <li class="nav-item ms-2">
+                            <a class="btn btn-outline-light btn-sm" href="{{ url_for('logout') }}">Logout</a>
                         </li>
-                    
                     {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url_for('login') }}">Login</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn btn-light text-primary ms-2 px-3" href="{{ url_for('register') }}">Register</a>
+                        <li class="nav-item ms-2">
+                            <a class="btn btn-light text-primary btn-sm px-3 fw-bold" href="{{ url_for('register') }}">Register</a>
                         </li>
                     {% endif %}
                 </ul>
@@ -51,7 +50,7 @@
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
-                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <div class="alert alert-info alert-dismissible fade show shadow-sm" role="alert">
                         {{ message }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
@@ -60,7 +59,7 @@
         {% endwith %}
     </div>
 
-    <div class="container mt-4">
+    <div class="container mt-4 mb-5">
         {% block content %}
         {% endblock %}
     </div>
