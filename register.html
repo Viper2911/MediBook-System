@@ -1,46 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="row justify-content-center mt-5">
-    <div class="col-md-6">
-        <div class="card p-4">
-            <h3 class="text-center mb-4">Create Account</h3>
-            <form method="POST">
-                <div class="mb-3">
-                    <label>Username</label>
-                    <input type="text" name="username" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label>Password</label>
-                    <input type="password" name="password" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label>I am a:</label>
-                    <select name="role" id="roleSelect" class="form-select" onchange="toggleFields()">
-                        <option value="patient">Patient</option>
-                        <option value="doctor">Doctor</option>
-                    </select>
-                </div>
-
-                <div id="doctorFields" style="display:none;" class="bg-light p-3 rounded mb-3">
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card shadow border-0 mt-4">
+            <div class="card-body p-5">
+                <h3 class="text-center text-primary fw-bold mb-4">Create an Account</h3>
+                <form method="POST">
                     <div class="mb-3">
-                        <label>Specialization</label>
-                        <input type="text" name="specialist" class="form-control" placeholder="e.g. Cardiologist">
+                        <label class="form-label text-muted fw-bold">Username</label>
+                        <input type="text" name="username" class="form-control form-control-lg" placeholder="Enter username" required>
                     </div>
                     <div class="mb-3">
-                        <label>Tags (Skills)</label>
-                        <input type="text" name="tags" class="form-control" placeholder="e.g. heart pain blood pressure">
+                        <label class="form-label text-muted fw-bold">Password</label>
+                        <input type="password" name="password" class="form-control form-control-lg" placeholder="Create a password" required>
                     </div>
-                </div>
-
-                <button type="submit" class="btn btn-success w-100 rounded-pill">Sign Up</button>
-            </form>
+                    <div class="mb-4">
+                        <label class="form-label text-muted fw-bold">I am a...</label>
+                        <select name="role" class="form-select form-select-lg">
+                            <option value="Patient">Patient</option>
+                            <option value="Doctor">Doctor</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg w-100 fw-bold">Register</button>
+                </form>
+                <p class="text-center mt-4 text-muted">Already have an account? <a href="{{ url_for('login') }}" class="text-decoration-none">Login here</a></p>
+            </div>
         </div>
     </div>
 </div>
-<script>
-    function toggleFields() {
-        var role = document.getElementById("roleSelect").value;
-        document.getElementById("doctorFields").style.display = (role === "doctor") ? "block" : "none";
-    }
-</script>
 {% endblock %}
