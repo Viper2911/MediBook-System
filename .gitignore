@@ -1,0 +1,47 @@
+# =========================
+# Virtual Environments
+# =========================
+venv/
+env/
+.venv/
+
+# =========================
+# Python Caches
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# =========================
+# Database Files
+# =========================
+# We ignore the database so you don't accidentally push real user passwords or test data
+instance/
+*.sqlite3
+*.db
+database.db
+
+# =========================
+# Testing Caches
+# =========================
+.pytest_cache/
+.coverage
+htmlcov/
+.mutmut-cache
+
+# =========================
+# IDE & OS Hidden Files
+# =========================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# =========================
+# Machine Learning Models
+# =========================
+# NOTE: Normally, large .pkl files are ignored. 
+# However, for this project, DO NOT ignore them! 
+# Your professor needs them to run your application.
+# *.pkl  <-- Kept commented out intentionally
