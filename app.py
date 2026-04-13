@@ -99,10 +99,10 @@ def dashboard():
 @login_required
 def search():
     recommended_doctors = []
-    
+    user_input=""
     if request.method == 'POST':
         symptoms = request.form.get('symptoms')
-        
+        user_input=symptoms
         if symptoms:
             user_vector = tfidf.transform([symptoms])
             similarity_scores = cosine_similarity(user_vector, tfidf_matrix).flatten()
@@ -119,7 +119,7 @@ def search():
             if not recommended_doctors:
                 flash("We couldn't find a strong match for those symptoms. Please try describing them differently.")
 
-    return render_template('search.html', doctors=recommended_doctors)
+    return render_template('search.html', doctors=recommended_doctors,symptoms=user_input)
 
 if __name__ == '__main__':
     app.run(debug=True)
